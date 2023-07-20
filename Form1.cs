@@ -13,6 +13,11 @@ namespace informationApp1._01
         {
             InitializeComponent();
             UnReadComment = LoadComment();
+            if (UnReadComment >= 1)
+            {
+                string message = UnReadComment + "件の未読コメントがあります";
+                listBox1.Items.Add(message);
+            }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -49,14 +54,7 @@ namespace informationApp1._01
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-
-            if(UnReadComment >= 1)
-            {
-                string message = UnReadComment + "件の未読コメントがあります。";
-
-                listBox1.Items.Add(message);
-            }
+           
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
