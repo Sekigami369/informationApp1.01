@@ -19,8 +19,21 @@ namespace informationApp1._01
                 listBox1.Items.Add(message);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            UnReadComment = LoadComment();
+            if (UnReadComment >= 1)
+            {
+                string message = UnReadComment + "åèÇÃñ¢ì«ÉRÉÅÉìÉgÇ™Ç†ÇËÇ‹Ç∑";
+                listBox1.Items.Add(message);
+            }
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -54,7 +67,8 @@ namespace informationApp1._01
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

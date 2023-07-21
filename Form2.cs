@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +16,7 @@ namespace informationApp1._01
         public Form2()
         {
             InitializeComponent();
+            comment_Load();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -25,14 +26,16 @@ namespace informationApp1._01
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Form2 form2 = new Form2();
+            form2.Close(); 
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
         }
-        private void comment_Load(object sender, EventArgs e)
+        private void comment_Load()
         {
             string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
 
