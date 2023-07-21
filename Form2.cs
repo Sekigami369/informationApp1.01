@@ -26,8 +26,7 @@ namespace informationApp1._01
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
-            form2.Close(); 
+            this.Close();
            
         }
 

@@ -12,6 +12,9 @@ namespace informationApp1._01
         public Form1()
         {
             InitializeComponent();
+
+            //既読テーブルの値がnull のものを表示するようにする
+
             UnReadComment = LoadComment();
             if (UnReadComment >= 1)
             {
@@ -22,6 +25,9 @@ namespace informationApp1._01
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            //既読テーブルの値がnullの物を表示するよに改良する    
+
             UnReadComment = LoadComment();
             if (UnReadComment >= 1)
             {
@@ -44,18 +50,15 @@ namespace informationApp1._01
         private void button1_Click(object sender, EventArgs e)
         {
             string userIdValue = textBox1.Text;
-            string userNameValue = textBox2.Text;
-            string commentValue = textBox3.Text;
+            string contentValue = textBox2.Text;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                String query = "INSERT INTO usersComment(userId, userName, comment)VALUES(@userId, @userName, @comment);";
+                String query = "INSERT INTO comments(content,userId)VALUES(@content, @userId);";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-
-                    command.Parameters.AddWithValue("@userId",userIdValue);
-                    command.Parameters.AddWithValue("@userName", userNameValue);
-                    command.Parameters.AddWithValue("@comment", commentValue);
+                    command.Parameters.AddWithValue("@userId", userIdValue);
+                    command.Parameters.AddWithValue("@content", contentValue);
                     
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -83,19 +86,31 @@ namespace informationApp1._01
 
         private int LoadComment()
         {
+            //既読テーブルからデータをとってくるように改良する  
+
             int UnReadCount = 0;
             string query = "SELECT COUNT(*) AS UnRead FROM usersComment WHERE isUnRead = 1;";
 
-            using(SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using(SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
-                    UnReadCount = (int)command.ExecuteScalar();                   
+                    UnReadCount = (int)command.ExecuteScalar();
 
                 }
             }
             return UnReadCount;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

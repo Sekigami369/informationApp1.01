@@ -33,7 +33,8 @@
             button1 = new Button();
             dataGridView1 = new DataGridView();
             textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(12, 223);
+            textBox1.Location = new Point(62, 197);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(283, 23);
             textBox1.TabIndex = 1;
@@ -57,46 +58,60 @@
             // 
             // button1
             // 
-            button1.Location = new Point(301, 296);
+            button1.Location = new Point(270, 317);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;
-            button1.Text = "button1";
+            button1.Text = "登録";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 352);
+            dataGridView1.Location = new Point(12, 363);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(240, 86);
+            dataGridView1.Size = new Size(364, 75);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(12, 260);
+            textBox2.Location = new Point(62, 231);
+            textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(283, 23);
+            textBox2.Size = new Size(283, 80);
             textBox2.TabIndex = 4;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
-            // textBox3
+            // label1
             // 
-            textBox3.Location = new Point(12, 297);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(283, 23);
-            textBox3.TabIndex = 5;
-            textBox3.TextChanged += textBox3_TextChanged;
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 205);
+            label1.Name = "label1";
+            label1.Size = new Size(41, 15);
+            label1.TabIndex = 5;
+            label1.Text = "UserID";
+            label1.Click += label1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 239);
+            label2.Name = "label2";
+            label2.Size = new Size(40, 15);
+            label2.TabIndex = 6;
+            label2.Text = "コメント";
+            label2.Click += label2_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(388, 450);
-            Controls.Add(textBox3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(textBox2);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
@@ -116,6 +131,7 @@
         private Button button1;
         private DataGridView dataGridView1;
         private TextBox textBox2;
-        private TextBox textBox3;
+        private Label label1;
+        private Label label2;
     }
 }
