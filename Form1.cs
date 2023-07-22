@@ -13,8 +13,6 @@ namespace informationApp1._01
         {
             InitializeComponent();
 
-            //既読テーブルの値がnull のものを表示するようにする
-
             UnReadComment = LoadComment();
             if (UnReadComment >= 1)
             {
@@ -24,9 +22,7 @@ namespace informationApp1._01
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-            //既読テーブルの値がnullの物を表示するよに改良する    
+        {   
 
             UnReadComment = LoadComment();
             if (UnReadComment >= 1)
@@ -79,17 +75,15 @@ namespace informationApp1._01
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private int LoadComment()
         {
-            //既読テーブルからデータをとってくるように改良する  
 
             int UnReadCount = 0;
-            string query = "SELECT COUNT(*) AS UnRead FROM usersComment WHERE isUnRead = 1;";
+            string query = "SELECT COUNT(c.comment_Id) AS count FROM comments AS c" +
+                " LEFT JOIN read_history AS rh " +
+                "ON c.comment_Id = rh.comment_Id" +  //このあたりにエラーがる
+                " WHERE rh.comment_Id IS NULL;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

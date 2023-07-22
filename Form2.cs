@@ -40,7 +40,7 @@ namespace informationApp1._01
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT comment FROM usersComment WHERE isUnRead = 1;";
+                string query = "SELECT content FROM comments ;";
 
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
