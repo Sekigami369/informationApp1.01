@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             listBox1 = new ListBox();
-            textBox1 = new TextBox();
             button1 = new Button();
             dataGridView1 = new DataGridView();
             textBox2 = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -47,14 +45,6 @@
             listBox1.Size = new Size(364, 169);
             listBox1.TabIndex = 0;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(62, 197);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(283, 23);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
             // 
@@ -85,16 +75,6 @@
             textBox2.TabIndex = 4;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 205);
-            label1.Name = "label1";
-            label1.Size = new Size(41, 15);
-            label1.TabIndex = 5;
-            label1.Text = "UserID";
-            label1.Click += label1_Click;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -111,11 +91,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(388, 450);
             Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(textBox2);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
-            Controls.Add(textBox1);
             Controls.Add(listBox1);
             Name = "Form1";
             Text = "Form1";
@@ -127,11 +105,9 @@
         #endregion
 
         private ListBox listBox1;
-        private TextBox textBox1;
         private Button button1;
         private DataGridView dataGridView1;
         private TextBox textBox2;
-        private Label label1;
         private Label label2;
     }
 }

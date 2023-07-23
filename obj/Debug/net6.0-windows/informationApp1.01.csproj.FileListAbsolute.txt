@@ -59,3 +59,4 @@ C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informat
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1.01.genruntimeconfig.cache
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\ref\informationApp1.01.dll
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.Form2.resources
+C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.Form3.resources

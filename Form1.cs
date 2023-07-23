@@ -7,11 +7,21 @@ namespace informationApp1._01
 {
     public partial class Form1 : Form
     {
+        public readonly int User_Id;
         int UnReadComment;
         string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
+
+
         public Form1()
         {
+
+        }
+
+        public Form1(int UserId)
+        {
             InitializeComponent();
+
+            this.User_Id = UserId;
 
             UnReadComment = LoadComment();
             if (UnReadComment >= 1)
@@ -22,7 +32,7 @@ namespace informationApp1._01
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {   
+        {
 
             UnReadComment = LoadComment();
             if (UnReadComment >= 1)
@@ -38,14 +48,8 @@ namespace informationApp1._01
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string userIdValue = textBox1.Text;
             string contentValue = textBox2.Text;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -53,9 +57,9 @@ namespace informationApp1._01
                 String query = "INSERT INTO comments(content,userId)VALUES(@content, @userId);";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@userId", userIdValue);
+                    command.Parameters.AddWithValue("@userId", User_Id);
                     command.Parameters.AddWithValue("@content", contentValue);
-                    
+
                     connection.Open();
                     command.ExecuteNonQuery();
 
@@ -96,12 +100,8 @@ namespace informationApp1._01
             }
             return UnReadCount;
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
+        
         private void label2_Click(object sender, EventArgs e)
         {
 
