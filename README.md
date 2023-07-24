@@ -1,4 +1,7 @@
 # informationApp1.01
 Repository for Personal Records
 
-2023-07-21/add Form2
+add Form2
+
+add comments table
+add read_history table 
