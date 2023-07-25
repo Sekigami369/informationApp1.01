@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace informationApp1._01
 {
-    public partial class Form3 : Form
+    public partial class LoginForm : Form
     {
 
-        public Form3()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace informationApp1._01
 
             if (User_Id != null) //仮の仕様後で治す
             {
-                Form1 form1 = new Form1(User_Id);
+                MainForm form1 = new MainForm(User_Id);
                 form1.ShowDialog();
 
                 this.Close();

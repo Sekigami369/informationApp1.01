@@ -5,19 +5,19 @@ using System.Data.SqlClient;
 
 namespace informationApp1._01
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         public readonly int User_Id;
         int UnReadComment;
         string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
 
 
-        public Form1()
+        public MainForm()
         {
 
         }
 
-        public Form1(int UserId)
+        public MainForm(int UserId)
         {
             InitializeComponent();
 
@@ -70,8 +70,8 @@ namespace informationApp1._01
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
-            form2.ShowDialog();
+            CommentsForm cf = new CommentsForm();
+            cf.ShowDialog();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -85,14 +85,13 @@ namespace informationApp1._01
 
             int UnReadCount = 0;
             string query = "SELECT COUNT(c.comment_Id) AS count FROM comments AS c" +
-                " LEFT JOIN read_history AS rh " +
-                "ON c.comment_Id = rh.comment_Id" +  //Ç±ÇÃÇ†ÇΩÇËÇ…ÉGÉâÅ[Ç™ÇÈ
-                " WHERE rh.comment_Id IS NULL;";
-
+                " WHERE NOT EXISTS (SELECT 1 FROM read_history AS rh WHERE rh.comment_Id = c.comment_Id AND rh.userId = @userId); "; 
+              
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@userId", User_Id);
                     connection.Open();
                     UnReadCount = (int)command.ExecuteScalar();
 

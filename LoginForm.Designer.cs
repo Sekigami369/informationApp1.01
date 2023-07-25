@@ -1,6 +1,6 @@
 ﻿namespace informationApp1._01
 {
-    partial class Form3
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.

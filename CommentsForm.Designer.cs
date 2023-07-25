@@ -1,6 +1,6 @@
 ﻿namespace informationApp1._01
 {
-    partial class Form2
+    partial class CommentsForm
     {
         /// <summary>
         /// Required designer variable.

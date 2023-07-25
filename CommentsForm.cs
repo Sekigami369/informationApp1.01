@@ -11,12 +11,21 @@ using System.Windows.Forms;
 
 namespace informationApp1._01
 {
-    public partial class Form2 : Form
+    public partial class CommentsForm : Form
     {
-        public Form2()
+        int User_Id;
+        private void SetUser_Id()
+        {
+            MainForm mainForm = new MainForm();
+            this.User_Id = mainForm.User_Id;
+
+        }
+        
+        public CommentsForm()
         {
             InitializeComponent();
             comment_Load();
+            SetUser_Id();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -27,7 +36,6 @@ namespace informationApp1._01
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-           
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -40,10 +48,15 @@ namespace informationApp1._01
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT content FROM comments ;";
+                string query = "SELECT content FROM comments AS c " +
+                    " LEFT JOIN read_history AS rh" +
+                    " ON c.comment_Id = rh.comment_Id " +
+                    " WHERE rh.comment_Id IS NULL AND " +
+                    "userId = @User_Id;";
 
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@User_Id", User_Id);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);

@@ -46,7 +46,6 @@ C:\Users\skgmy\source\repos\informationApp1.01\bin\Debug\net6.0-windows\runtimes
 C:\Users\skgmy\source\repos\informationApp1.01\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\skgmy\source\repos\informationApp1.01\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1.01.csproj.AssemblyReference.cache
-C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.Form1.resources
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1.01.csproj.GenerateResource.cache
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1.01.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1.01.AssemblyInfoInputs.cache
@@ -58,5 +57,6 @@ C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\refint\i
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1.01.pdb
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1.01.genruntimeconfig.cache
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\ref\informationApp1.01.dll
-C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.Form2.resources
-C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.Form3.resources
+C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.CommentsForm.resources
+C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.LoginForm.resources
+C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.MainForm.resources
