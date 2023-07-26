@@ -26,6 +26,7 @@ namespace informationApp1._01
             InitializeComponent();
             comment_Load();
             SetUser_Id();
+            IsReadComments(User_Id);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -62,6 +63,21 @@ namespace informationApp1._01
 
                     dataGridView1.DataSource = dataTable;
 
+                }
+            }
+        }
+
+        private async Task IsReadComments(int User_Id)  //未接続メソッド
+        {
+            string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO read_history( )VALUES( );";　　//続きをここに書く
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@User_Id", User_Id);
+                    connection.Open();
                 }
             }
         }
