@@ -7,4 +7,4 @@ add comments table
 add read_history table 
 
 "UserId make method"
-"comment SQL rebild"
+"comment SQL rebuild"
