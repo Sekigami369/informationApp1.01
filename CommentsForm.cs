@@ -55,7 +55,7 @@ namespace informationApp1._01
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@User_Id", User_Id);
+                    command.Parameters.AddWithValue("@UserId", User_Id);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
