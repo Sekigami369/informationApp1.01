@@ -48,13 +48,12 @@ namespace informationApp1._01
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT content FROM comments AS c " +
-                    " LEFT JOIN read_history AS rh" +
-                    " ON c.comment_Id = rh.comment_Id " +
-                    " WHERE rh.comment_Id IS NULL AND " +
-                    "userId = @User_Id;";
+                int UnReadCount = 0;
+                string query = "SELECT c.comment_Id AS count FROM comments AS c" +
+                    " WHERE NOT EXISTS (SELECT 1 FROM read_history AS rh WHERE rh.comment_Id = c.comment_Id AND rh.userId = @userId); ";
 
-                using(SqlCommand command = new SqlCommand(query, connection))
+
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@User_Id", User_Id);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
