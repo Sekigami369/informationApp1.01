@@ -39,7 +39,7 @@ namespace informationApp1._01
                 String query = "INSERT INTO comments(content,userId)VALUES(@content, @userId);";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@userId", UserId);
+                    command.Parameters.AddWithValue("@userId" , UserId);
                     command.Parameters.AddWithValue("@content", contentValue);
 
                     connection.Open();
