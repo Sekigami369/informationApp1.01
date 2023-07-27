@@ -7,21 +7,15 @@ namespace informationApp1._01
 {
     public partial class MainForm : Form
     {
-        public readonly int User_Id;
+        public readonly int UserId;
         int UnReadComment;
         string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
-
-
-        public MainForm()
-        {
-
-        }
 
         public MainForm(int UserId)
         {
             InitializeComponent();
 
-            this.User_Id = UserId;
+            this.UserId = UserId;
 
             UnReadComment = LoadComment();
             if (UnReadComment >= 1)
@@ -29,18 +23,6 @@ namespace informationApp1._01
                 string message = UnReadComment + "件の未読コメントがあります";
                 listBox1.Items.Add(message);
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-            UnReadComment = LoadComment();
-            if (UnReadComment >= 1)
-            {
-                string message = UnReadComment + "件の未読コメントがあります";
-                listBox1.Items.Add(message);
-            }
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -57,7 +39,7 @@ namespace informationApp1._01
                 String query = "INSERT INTO comments(content,userId)VALUES(@content, @userId);";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@userId", User_Id);
+                    command.Parameters.AddWithValue("@userId", UserId);
                     command.Parameters.AddWithValue("@content", contentValue);
 
                     connection.Open();
@@ -70,7 +52,8 @@ namespace informationApp1._01
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CommentsForm cf = new CommentsForm();
+           
+            CommentsForm cf = new CommentsForm(this);
             cf.ShowDialog();
         }
 
@@ -84,14 +67,14 @@ namespace informationApp1._01
         {
 
             int UnReadCount = 0;
-            string query = "SELECT COUNT(c.comment_Id) AS count FROM comments AS c" +
+            string query = "SELECT COUNT(*) FROM comments AS c" +
                 " WHERE NOT EXISTS (SELECT 1 FROM read_history AS rh WHERE rh.comment_Id = c.comment_Id AND rh.userId = @userId); "; 
               
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@userId", User_Id);
+                    command.Parameters.AddWithValue("@userId", UserId);
                     connection.Open();
                     UnReadCount = (int)command.ExecuteScalar();
 

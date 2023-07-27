@@ -13,20 +13,14 @@ namespace informationApp1._01
 {
     public partial class CommentsForm : Form
     {
-        int User_Id;
-        private void SetUser_Id()
-        {
-            MainForm mainForm = new MainForm();
-            this.User_Id = mainForm.User_Id;
+        int UserId;
 
-        }
-        
-        public CommentsForm()
+        public CommentsForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.UserId = mainForm.UserId;
             comment_Load();
-            SetUser_Id();
-            IsReadComments(User_Id);
+            IsReadComments(UserId);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -56,7 +50,7 @@ namespace informationApp1._01
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserId", User_Id);
+                    command.Parameters.AddWithValue("@UserId", UserId);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     adapter.Fill(dataTable);
@@ -67,19 +61,28 @@ namespace informationApp1._01
             }
         }
 
-        private async Task IsReadComments(int User_Id)  //未接続メソッド
+
+        private async Task IsReadComments(int UserId)  //未接続メソッド
         {
             string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO read_history( )VALUES( );";　　//続きをここに書く
+                string query = "INSERT INTO read_history (comment_id, userId) " +
+                               " SELECT comment_id, @UserId " +
+                               " FROM comments AS C " +
+                               " WHERE NOT EXISTS ( SELECT 1 " +
+                               " FROM read_history AS rh " +
+                               " WHERE rh.comment_id = c.comment_id AND rh.userId = @UserId);";
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@User_Id", User_Id);
+                    command.Parameters.AddWithValue("@UserId", UserId);
                     connection.Open();
+                    command.ExecuteNonQuery();
                 }
             }
         }
     }
 }
+
