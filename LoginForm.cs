@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,8 @@ namespace informationApp1._01
     {
         int UserId;
         string Password;
+
+        string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
 
 
         public LoginForm()
@@ -36,27 +40,61 @@ namespace informationApp1._01
                 MessageBox.Show("4桁の数字を入力してください。");
             }
 
-
-
-
-            if (UserId != null) //仮の仕様後で治す
+            if (IsAlphaNumeric(passWord) && IdAndPassCheck(UserId, passWord) && ValidCheck(passWord))
             {
                 MainForm form1 = new MainForm(UserId);
                 form1.ShowDialog();
 
                 this.Close();
             }
-            
+            else
+            {
+                MessageBox.Show("入力内容が正しくありません。");
+
+            }
         }
 
-        private void IsAlphaNumeric(string Password)
+        private bool IsAlphaNumeric(string PassWord)
         {
             string pattern = @"[^\x00-\x7F]";
 
-            if (Regex.IsMatch(Password, pattern))
+            if (Regex.IsMatch(PassWord, pattern))
             {
-
+                return true;
             }
+            return false;
+        }
+
+        private bool ValidCheck(string PassWord)
+        {
+            if(string.IsNullOrWhiteSpace(PassWord))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool IdAndPassCheck(int UserId, string PassWord)
+        {
+            string query = "SELECT COUNT(*) FROM idPass WHERE id = @UserId AND pass = @pass;";
+            int count = 0;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", UserId);
+                    command.Parameters.AddWithValue("@pass", PassWord);
+
+                    connection.Open();
+                    count = (int)command.ExecuteScalar();
+
+                }
+            }
+            if (count > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
 
@@ -84,8 +122,5 @@ namespace informationApp1._01
         {
 
         }
-
-        
-        private void IsValidCheck(UserId)
     }
 }
