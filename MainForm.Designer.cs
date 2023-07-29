@@ -30,17 +30,16 @@
         {
             listBox1 = new ListBox();
             button1 = new Button();
-            dataGridView1 = new DataGridView();
             textBox2 = new TextBox();
             label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(12, 12);
+            listBox1.Location = new Point(12, 41);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(364, 169);
             listBox1.TabIndex = 0;
@@ -55,16 +54,6 @@
             button1.Text = "登録";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 363);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(364, 75);
-            dataGridView1.TabIndex = 3;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // textBox2
             // 
@@ -85,19 +74,29 @@
             label2.Text = "コメント";
             label2.Click += label2_Click;
             // 
-            // Form1
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(270, 23);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(108, 15);
+            linkLabel1.TabIndex = 7;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "過去のコメント一覧へ";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(388, 450);
+            Controls.Add(linkLabel1);
             Controls.Add(label2);
             Controls.Add(textBox2);
-            Controls.Add(dataGridView1);
             Controls.Add(button1);
             Controls.Add(listBox1);
-            Name = "Form1";
+            Name = "MainForm";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -106,8 +105,8 @@
 
         private ListBox listBox1;
         private Button button1;
-        private DataGridView dataGridView1;
         private TextBox textBox2;
         private Label label2;
+        private LinkLabel linkLabel1;
     }
 }

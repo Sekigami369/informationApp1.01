@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.VisualBasic.ApplicationServices;
+﻿using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace informationApp1._01
 {
@@ -31,47 +31,57 @@ namespace informationApp1._01
             string input = textBox1.Text;
             string passWord = textBox2.Text;
 
-            if(int.TryParse(input, out UserId))
-            {
-
-            }
-            else
+            if(!int.TryParse(input, out UserId))
             {
                 MessageBox.Show("4桁の数字を入力してください。");
             }
 
-            if (IsAlphaNumeric(passWord) && IdAndPassCheck(UserId, passWord) && ValidCheck(passWord))
-            {
-                MainForm form1 = new MainForm(UserId);
-                form1.ShowDialog();
 
-                this.Close();
+            if (!ValidCheck(passWord))
+            {
+                MessageBox.Show("パスワードを入力してください。");
+                return;
+            }
+
+            if (!IsAlphaNumeric(passWord))
+            {
+                MessageBox.Show("半角英数字で入力してください。");
+                return;
+            }
+                    
+            if (IdAndPassCheck(UserId, passWord))
+            {
+                 MainForm form1 = new MainForm(UserId);
+                 form1.ShowDialog();
+                 this.Close();
             }
             else
             {
-                MessageBox.Show("入力内容が正しくありません。");
-
+                MessageBox.Show("IDもしくはパスワードが間違っています。");
+                return;
             }
+                
+            
         }
 
         private bool IsAlphaNumeric(string PassWord)
         {
-            string pattern = @"[^\x00-\x7F]";
+            string pattern = @"[^\x00-\x7F]"; //半角英数字以外を検出する正規表現
 
             if (Regex.IsMatch(PassWord, pattern))
             {
-                return true;
+                return　false;
             }
-            return false;
+            return true;
         }
 
         private bool ValidCheck(string PassWord)
         {
             if(string.IsNullOrWhiteSpace(PassWord))
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         private bool IdAndPassCheck(int UserId, string PassWord)

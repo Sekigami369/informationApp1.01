@@ -44,8 +44,8 @@ namespace informationApp1._01
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 int UnReadCount = 0;
-                string query = "SELECT c.comment_Id AS count FROM comments AS c" +
-                    " WHERE NOT EXISTS (SELECT 1 FROM read_history AS rh WHERE rh.comment_Id = c.comment_Id AND rh.userId = @userId); ";
+                string query = "SELECT c.content AS 'コメント' FROM comments AS c" +
+                    " WHERE c.userId = @userId AND NOT EXISTS (SELECT 1 FROM read_history AS rh WHERE rh.comment_Id = c.comment_Id AND rh.userId = @userId); ";
 
 
                 using (SqlCommand command = new SqlCommand(query, connection))
