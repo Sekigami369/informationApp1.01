@@ -60,3 +60,4 @@ C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\ref\info
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.CommentsForm.resources
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.LoginForm.resources
 C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.MainForm.resources
+C:\Users\skgmy\source\repos\informationApp1.01\obj\Debug\net6.0-windows\informationApp1._01.PastCommentsList.resources

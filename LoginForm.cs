@@ -52,8 +52,9 @@ namespace informationApp1._01
             if (IdAndPassCheck(UserId, passWord))
             {
                  MainForm form1 = new MainForm(UserId);
-                 form1.ShowDialog();
+                 form1.Show();
                  this.Close();
+                
             }
             else
             {
@@ -107,6 +108,7 @@ namespace informationApp1._01
             return false;
         }
 
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
