@@ -11,8 +11,10 @@ using System.Windows.Forms;
 
 namespace informationApp1._01
 {
+    
     public partial class CommentsForm : Form
     {
+        string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
         int UserId;
 
         public CommentsForm(MainForm mainForm)
@@ -39,8 +41,7 @@ namespace informationApp1._01
         }
         private void comment_Load()
         {
-            string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
-
+            
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 int UnReadCount = 0;
@@ -62,10 +63,9 @@ namespace informationApp1._01
         }
 
 
-        private async Task IsReadComments(int UserId)  //未接続メソッド
+        public async Task IsReadComments(int UserId)  //未接続メソッド
         {
-            string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
-
+            
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "INSERT INTO read_history (comment_id, userId) " +
