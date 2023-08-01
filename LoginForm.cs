@@ -15,7 +15,7 @@ namespace informationApp1._01
 {
     public partial class LoginForm : Form
     {
-        int UserId;
+        private int UserId;
         string Password;
 
         string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
@@ -52,7 +52,7 @@ namespace informationApp1._01
             if (IdAndPassCheck(UserId, passWord))
             {
                  MainForm form1 = new MainForm(UserId);
-                 form1.Show();
+                 form1.ShowDialog();
                  this.Close();
                 
             }
@@ -61,8 +61,6 @@ namespace informationApp1._01
                 MessageBox.Show("IDもしくはパスワードが間違っています。");
                 return;
             }
-                
-            
         }
 
         private bool IsAlphaNumeric(string PassWord)
@@ -106,6 +104,11 @@ namespace informationApp1._01
                 return true;
             }
             return false;
+        }
+
+        public int GetUserId()
+        {
+            return UserId;
         }
 
        

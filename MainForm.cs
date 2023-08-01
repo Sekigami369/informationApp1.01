@@ -39,7 +39,7 @@ namespace informationApp1._01
         private void button1_Click(object sender, EventArgs e)
         {
             string contentValue = textBox2.Text;
-           
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 String query = "INSERT INTO comments(content,userId)VALUES(@content, @userId);";
@@ -61,7 +61,7 @@ namespace informationApp1._01
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            CommentsForm cf = new CommentsForm(this);
+            CommentsForm cf = new CommentsForm(UserId);
             cf.ShowDialog();
         }
 
@@ -94,7 +94,6 @@ namespace informationApp1._01
             return UnReadCount;
         }
 
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -102,8 +101,13 @@ namespace informationApp1._01
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PastCommentsList pastComments = new PastCommentsList(this);
-            pastComments.ShowDialog();
+            PastCommentsList pastComments = new PastCommentsList(UserId);
+            pastComments.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -33,6 +33,7 @@
             textBox2 = new TextBox();
             label2 = new Label();
             linkLabel1 = new LinkLabel();
+            label1 = new Label();
             SuspendLayout();
             // 
             // listBox1
@@ -47,7 +48,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(270, 317);
+            button1.Location = new Point(301, 415);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;
@@ -57,17 +58,17 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(62, 231);
+            textBox2.Location = new Point(12, 303);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(283, 80);
+            textBox2.Size = new Size(364, 80);
             textBox2.TabIndex = 4;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 239);
+            label2.Location = new Point(12, 285);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
             label2.TabIndex = 6;
@@ -85,11 +86,22 @@
             linkLabel1.Text = "過去のコメント一覧へ";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(14, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 15);
+            label1.TabIndex = 8;
+            label1.Text = "新着情報";
+            label1.Click += label1_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(388, 450);
+            Controls.Add(label1);
             Controls.Add(linkLabel1);
             Controls.Add(label2);
             Controls.Add(textBox2);
@@ -108,5 +120,6 @@
         private TextBox textBox2;
         private Label label2;
         private LinkLabel linkLabel1;
+        private Label label1;
     }
 }

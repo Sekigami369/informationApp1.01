@@ -30,7 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             button1 = new Button();
-            button2 = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -48,42 +48,43 @@
             // 
             // button1
             // 
-            button1.Location = new Point(351, 26);
+            button1.Location = new Point(385, 44);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 1;
-            button1.Text = "button1";
+            button1.Text = "戻る";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // button2
+            // label1
             // 
-            button2.Location = new Point(220, 26);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 48);
+            label1.Name = "label1";
+            label1.Size = new Size(52, 15);
+            label1.TabIndex = 2;
+            label1.Text = "全コメント";
+            label1.Click += label1_Click;
             // 
             // PastCommentsList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(472, 443);
-            Controls.Add(button2);
+            Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "PastCommentsList";
             Text = "PastCommentsList";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
         private Button button1;
-        private Button button2;
+        private Label label1;
     }
 }

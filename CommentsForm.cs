@@ -11,17 +11,20 @@ using System.Windows.Forms;
 
 namespace informationApp1._01
 {
+
     public partial class CommentsForm : Form
     {
+        string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
         int UserId;
 
-        public CommentsForm(MainForm mainForm)
+        public CommentsForm(int UserId)
         {
             InitializeComponent();
-            this.UserId = mainForm.UserId;
+            this.UserId = UserId;
             comment_Load();
             IsReadComments(UserId);
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -39,7 +42,6 @@ namespace informationApp1._01
         }
         private void comment_Load()
         {
-            string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -62,9 +64,8 @@ namespace informationApp1._01
         }
 
 
-        private async Task IsReadComments(int UserId)  //未接続メソッド
+        public async Task IsReadComments(int UserId)  //未接続メソッド
         {
-            string connectionString = "Server=localhost;Database=MyDatabase;Trusted_Connection=true;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -82,6 +83,11 @@ namespace informationApp1._01
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
